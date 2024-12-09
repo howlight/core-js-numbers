@@ -106,16 +106,11 @@ function getLinearEquationRoot(a, b) {
  *   (0,1) (0,1)     => 0
  */
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-  // Formula
-  // angle = arccos((xi1 * xi2 + yi1 * yi2) / (sqrt(xi1^2 + yi1^2) * sqrt(xi2^2 + yi2^2)))
-  // Calculate the dot product of the two vectors
   const dotProduct = x1 * x2 + y1 * y2;
 
-  // Calculate the magnitudes of the two vectors
   const magnitude1 = Math.sqrt(x1 ** 2 + y1 ** 2);
   const magnitude2 = Math.sqrt(x2 ** 2 + y2 ** 2);
 
-  // Calculate the angle in radians using the dot product and magnitudes
   const angleInRadians = Math.acos(dotProduct / (magnitude1 * magnitude2));
 
   return angleInRadians;
@@ -135,7 +130,6 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  // The last digit is the remainder when dividing by 10.
   return value % 10;
 }
 
@@ -168,7 +162,6 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelepipedDiagonal(a, b, c) {
-  // Formula d = sqrt(a^2 + b^2 + c^2)
   return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
 }
 
@@ -212,14 +205,9 @@ function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 function isPrime(n) {
-  // Простое число — это число больше 1.
   if (n <= 1) return false;
-  // 2 – это простое число
   if (n === 2) return true;
-  // Находим квадратный корень n (для уменьшения кол-ва итераций)
   const nSqrt = Math.sqrt(n);
-  // Проверка, можно ли разделить число на другие множители
-  // (кроме 1 и самого себя) без остатка.
   for (let i = 2; i <= nSqrt; i += 1) {
     if (n % i === 0) return false;
   }
@@ -277,7 +265,6 @@ function getCube(num) {
  *   10 => 55
  */
 function getFibonacciNumber(index) {
-  // Рекурсивный способ
   return index <= 1
     ? index
     : getFibonacciNumber(index - 1) + getFibonacciNumber(index - 2);
@@ -330,19 +317,6 @@ function getSumOfDigits(num) {
  *   15  => false
  */
 function isPowerOfTwo(num) {
-  // Решение через цикл
-  /* let i = 0;
-  while (2 ** i < num) {
-    i += 1;
-  }
-  if (2 ** i === num) {
-    return true;
-  }
-  return false; */
-  // Решение через логарифм и проверку на целое число
-  // Number.isInteger() определяет, является ли переданное значение целым числом.
-  // Возвращает true или false
-  // Math.log2() возвращает двоичный (по основанию 2) логарифм числа
   return Number.isInteger(Math.log2(num));
 }
 
@@ -357,7 +331,6 @@ function isPowerOfTwo(num) {
  *   Math.PI / 2 => 1
  */
 function getSine(num) {
-  // Math.sin() возвращает синус числа.
   return Math.sin(num);
 }
 
@@ -373,7 +346,6 @@ function getSine(num) {
  * 2, 2    => '10'
  */
 function numberToStringInBase(number, base) {
-  // numObj.toString([radix]) возвращает строковое представление указанного объекта Number.
   return number.toString(base);
 }
 
@@ -388,8 +360,6 @@ function numberToStringInBase(number, base) {
  * 12345, 2    => '1.23e+4'
  */
 function toExponential(number, fractionDigits) {
-  // numObj.toExponential([fractionDigits]) возвращает строку,
-  // представляющую объект Number в экспоненциальной записи.
   return number.toExponential(fractionDigits);
 }
 
@@ -405,8 +375,6 @@ function toExponential(number, fractionDigits) {
  * 12.345, 1   => '12.3'
  */
 function toFixed(number, fractionDigits) {
-  // numObj.toFixed([digits]) форматирует число, используя запись с фиксированной запятой.
-  // Возвращает строку
   return number.toFixed(fractionDigits);
 }
 
@@ -423,8 +391,6 @@ function toFixed(number, fractionDigits) {
  * 12.345, 4   => '12.35'
  */
 function toPrecision(number, precision) {
-  // numObj.toPrecision([precision]) возвращает строку,
-  // представляющую объект Number с указанной точностью.
   return number.toPrecision(precision);
 }
 
@@ -439,7 +405,6 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  // numObj.valueOf() возвращает примитивное значение объекта Number.
   return number.valueOf();
 }
 
@@ -459,7 +424,6 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  // Number.isFinite() определяет, является ли переданное значение конечным числом.
   return Number.isFinite(number);
 }
 
@@ -475,7 +439,6 @@ function isNumber(number) {
  * '5'  => false
  */
 function isInteger(number) {
-  // Number.isInteger() определяет, является ли переданное значение целым числом.
   return Number.isInteger(number);
 }
 
@@ -490,7 +453,6 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  // Number.parseFloat() разбирает строковый аргумент и возвращает число с плавающей запятой.
   return Number.parseFloat(str);
 }
 
@@ -509,7 +471,6 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  // Number.parseInt(string, radix) разбирает строковый аргумент и возвращает целое число.
   return Number.parseInt(str, base);
 }
 
@@ -525,7 +486,6 @@ function getIntegerOnString(str, base) {
  * 2 ** 53  => false
  */
 function isSafeInteger(number) {
-  // Number.isSafeInteger() определяет, является ли переданное значение безопасным целым числом.
   return Number.isSafeInteger(number);
 }
 
@@ -540,7 +500,6 @@ function isSafeInteger(number) {
  * -5.1 => -6
  */
 function roundToSmallestInteger(number) {
-  // Math.floor() - округляет аргумент до ближайшего меньшего целого.
   return Math.floor(number);
 }
 
@@ -555,7 +514,6 @@ function roundToSmallestInteger(number) {
  * -5.9 => -5
  */
 function roundToLargestInteger(number) {
-  // Math.ceil() - округляет аргумент до ближайшего большего целого.
   return Math.ceil(number);
 }
 
@@ -571,7 +529,6 @@ function roundToLargestInteger(number) {
  * -5.5 => -5
  */
 function roundToNearestInteger(number) {
-  // Math.round() возвращает число, округлённое к ближайшему целому.
   return Math.round(number);
 }
 
@@ -587,7 +544,6 @@ function roundToNearestInteger(number) {
  * -5.5 => -5
  */
 function getIntegerPartNumber(number) {
-  // Math.trunc() возвращает целую часть числа путём удаления всех дробных знаков.
   return Math.trunc(number);
 }
 
@@ -604,7 +560,6 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  // return +(x1 + x2 + x3).toFixed(1);
   return Number.parseFloat((x1 + x2 + x3).toFixed(1));
 }
 
@@ -621,7 +576,6 @@ function getSumOfNumbers(x1, x2, x3) {
  * 0, 5   => 5
  */
 function getMaxNumber(firstNumber, secondNumber) {
-  // Math.max() возвращает наибольшее из нуля или более чисел.
   return Math.max(firstNumber, secondNumber);
 }
 
@@ -654,7 +608,6 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  // Math.hypot() возвращает квадратный корень суммы квадратов своих аргументов
   return Math.hypot(a, b);
 }
 
